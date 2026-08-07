@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+The Practical AI Agent Framework | Principles for Building Practical AI Agents
+</title>
+
+<meta name="description"
+content="A practical architectural framework and design principles for building AI agents that reliably complete real-world work through Identity, Knowledge, Capabilities and Execution.">
+
+<meta name="author"
+content="Abhilash Bhagat">
+
+<meta name="keywords"
+content="AI Agent, AI Agents, Agentic AI, Practical AI Agent, AI Agent Architecture, Context Engineering, Agent Framework, LLM, MCP, RAG">
+
+<meta property="og:title"
+content="The Practical AI Agent Framework">
+
+<meta property="og:description"
+content="A practical architectural framework for designing AI agents that deliver completed outcomes.">
+
+<meta property="og:type"
+content="article">
+
+<meta property="og:image"
+content="cover.png">
+
+<meta name="twitter:card"
+content="summary_large_image">
+
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<link rel="canonical" href="">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"The Practical AI Agent Framework",
+  "author":{
+    "@type":"Person",
+    "name":"Abhilash Bhagat"
+  },
+  "datePublished":"2026-08-08",
+  "keywords":"AI Agents, Agentic AI, Context Engineering",
+  "articleSection":"Artificial Intelligence"
+}
+</script>
+
+<style>
+
+:root{
+
+--background:#FBFBFD;
+--surface:#FFFFFF;
+
+--text:#1D1D1F;
+--secondary:#6E6E73;
+
+--border:#D2D2D7;
+
+--accent:#0066CC;
+
+--max-width:900px;
+
+--radius:22px;
+
+--shadow:
+0 10px 40px rgba(0,0,0,.04);
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:var(--background);
+
+font-family:
+
+-apple-system,
+
+BlinkMacSystemFont,
+
+"SF Pro Display",
+
+"SF Pro Text",
+
+Helvetica,
+
+Arial,
+
+sans-serif;
+
+color:var(--text);
+
+line-height:1.72;
+
+-webkit-font-smoothing:antialiased;
+
+}
+
+::selection{
+
+background:#d8ebff;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+a{
+
+color:var(--accent);
+
+text-decoration:none;
+
+}
+
+.wrapper{
+
+width:min(
+var(--max-width),
+92vw
+);
+
+margin:auto;
+
+}
+.progress{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:3px;
+
+width:100%;
+
+background:#ececec;
+
+z-index:1000;
+
+}
+
+.progress-bar{
+
+height:100%;
+
+width:0;
+
+background:var(--accent);
+
+transition:.15s linear;
+
+}
+nav{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+backdrop-filter:blur(24px);
+
+background:
+
+rgba(251,251,253,.82);
+
+border-bottom:
+
+1px solid rgba(0,0,0,.05);
+
+}
+
+nav .wrapper{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:
+
+16px
+0;
+
+}
+
+.logo{
+
+font-weight:600;
+
+letter-spacing:-.02em;
+
+font-size:15px;
+
+}
+
+.nav-links{
+
+display:flex;
+
+gap:28px;
+
+font-size:14px;
+
+color:var(--secondary);
+
+}
+
+.nav-links a{
+
+color:inherit;
+
+transition:.2s;
+
+}
+
+.nav-links a:hover{
+
+color:var(--text);
+
+}
+header{
+
+padding:
+
+120px
+0
+70px;
+
+}
+
+.kicker{
+
+font-size:15px;
+
+font-weight:600;
+
+letter-spacing:.12em;
+
+text-transform:uppercase;
+
+color:var(--accent);
+
+margin-bottom:22px;
+
+}
+
+h1{
+
+font-size:
+
+clamp(
+48px,
+7vw,
+82px
+);
+
+line-height:.98;
+
+letter-spacing:-.055em;
+
+font-weight:700;
+
+max-width:900px;
+
+}
+
+.subtitle{
+
+margin-top:28px;
+
+font-size:26px;
+
+line-height:1.45;
+
+color:var(--secondary);
+
+max-width:760px;
+
+}
+
+.author{
+
+margin-top:52px;
+
+display:flex;
+
+gap:16px;
+
+align-items:center;
+
+font-size:15px;
+
+color:var(--secondary);
+
+}
+section{
+
+padding:
+
+90px
+0;
+
+}
+
+h2{
+
+font-size:44px;
+
+letter-spacing:-.04em;
+
+margin-bottom:26px;
+
+}
+
+h3{
+
+font-size:28px;
+
+letter-spacing:-.03em;
+
+margin:
+
+60px
+0
+20px;
+
+}
+
+p{
+
+font-size:21px;
+
+margin-bottom:22px;
+
+}
+.quote{
+
+margin:
+
+70px
+0;
+
+padding:
+
+40px;
+
+border-left:
+
+4px solid var(--accent);
+
+background:white;
+
+border-radius:
+
+0
+22px
+22px
+0;
+
+box-shadow:
+
+var(--shadow);
+
+}
+
+.quote p{
+
+font-size:34px;
+
+letter-spacing:-.03em;
+
+line-height:1.3;
+
+margin:0;
+
+}
+.takeaway{
+
+background:white;
+
+padding:34px;
+
+border-radius:24px;
+
+margin:
+
+46px
+0;
+
+box-shadow:
+
+var(--shadow);
+
+}
+
+.takeaway h4{
+
+font-size:18px;
+
+margin-bottom:10px;
+
+}
+
+.takeaway p{
+
+font-size:18px;
+
+margin:0;
+
+color:var(--secondary);
+
+}
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin:
+
+50px
+0;
+
+background:white;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:var(--shadow);
+
+}
+
+th{
+
+text-align:left;
+
+font-size:15px;
+
+padding:22px;
+
+background:#f5f5f7;
+
+}
+
+td{
+
+padding:20px;
+
+border-top:
+
+1px solid var(--border);
+
+vertical-align:top;
+
+}
+figure{
+
+margin:
+
+70px
+0;
+
+text-align:center;
+
+}
+
+figcaption{
+
+margin-top:18px;
+
+font-size:15px;
+
+color:var(--secondary);
+
+}
+
+.diagram{
+
+background:white;
+
+border-radius:30px;
+
+padding:50px;
+
+box-shadow:var(--shadow);
+
+}
+
+.framework-diagram{
+
+margin:80px auto;
+
+text-align:center;
+
+}
+
+.framework-diagram object{
+
+width:100%;
+
+max-width:900px;
+
+height:auto;
+
+display:block;
+
+margin:auto;
+
+}
+.toc{
+
+background:white;
+
+padding:36px;
+
+border-radius:24px;
+
+box-shadow:var(--shadow);
+
+margin:
+
+70px
+0;
+
+}
+
+.toc h3{
+
+margin:0 0 18px;
+
+font-size:20px;
+
+}
+
+.toc ol{
+
+padding-left:20px;
+
+}
+
+.toc li{
+
+margin-bottom:12px;
+
+font-size:18px;
+
+}
+footer{
+
+padding:
+
+120px
+0;
+
+color:var(--secondary);
+
+font-size:15px;
+
+border-top:
+
+1px solid var(--border);
+
+margin-top:100px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="progress">
+    <div class="progress-bar"></div>
+</div>
+
+<nav role="navigation" aria-label="Main navigation">
+
+<div class="wrapper">
+
+<div class="logo">
+The Practical AI Agent Framework
+</div>
+
+<div class="nav-links">
+
+<a href="#introduction">Introduction</a>
+
+<a href="#framework">Framework</a>
+
+<a href="#identity">Identity</a>
+
+<a href="#knowledge">Knowledge</a>
+
+<a href="#capabilities">Capabilities</a>
+
+<a href="#execution">Execution</a>
+
+<a href="#principles">Principles</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<main>
+<article>
+
+<header>
+
+<div class="wrapper">
+
+<div class="kicker">
+Practical AI Agent Design
+</div>
+
+<h1>
+
+The Practical AI Agent Framework
+
+</h1>
+
+<p class="subtitle">
+
+Design Principles for Building AI Agents That Deliver Real-World Outcomes
+
+</p>
+
+<div class="author">
+
+<div>
+
+<strong>Framework Draft v1.0</strong>
+
+<br>
+
+A practical framework and set of design principles for architecting AI agents using four foundational pillars: Identity, Knowledge, Capabilities and Execution.
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+<section id="introduction">
+
+<div class="wrapper">
+
+<h2>
+
+Introduction
+
+</h2>
+
+<p>
+
+Over the past year, <strong>AI Agent</strong> has become one of the most overloaded terms in software.
+
+Every week introduces another framework, orchestration library, or product claiming to simplify agent development. Most conversations quickly move toward prompts, reasoning models, vector databases, MCP servers, or orchestration frameworks.
+
+These are important implementation choices.
+
+However, they rarely answer a much more fundamental question.
+
+</p>
+
+<div class="quote">
+
+<p>
+
+What does an AI agent actually need in order to reliably complete real-world work?
+
+</p>
+
+</div>
+
+<p>
+
+While helping a colleague think through agent design, I found myself sketching a simple flowchart to answer exactly that question.
+
+The deeper we discussed it, the more I realised the conversation had very little to do with prompts or models.
+
+Instead, it sounded remarkably similar to onboarding a new employee.
+
+</p>
+
+<p>
+
+If you hired someone today to perform a specific job independently, you wouldn't start by handing them a prompt.
+
+You would first define their role, teach them what they need to know, provide access to the right systems, establish how they should perform their work, and finally evaluate them based on the outcomes they deliver.
+
+Those same questions turned out to be equally useful when designing AI agents.
+
+</p>
+
+<p>
+
+That observation became the foundation for what I now call <strong>The Practical AI Agent Framework</strong>.
+
+</p>
+
+<div class="takeaway">
+
+<h4>
+
+Purpose of this Framework
+
+</h4>
+
+<p>
+
+This framework is not an attempt to redefine AI agents. Instead, it proposes a practical architectural model for designing agents that can reliably complete real-world work.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="analogy">
+
+<div class="wrapper">
+
+<h2>The Employee Analogy</h2>
+
+<p>
+
+One way to think about a practical AI agent is to imagine hiring a new employee.
+
+Regardless of the role, the onboarding process follows a remarkably consistent pattern.
+
+First, we define the role.
+
+Then we teach them what they need to know.
+
+We provide access to the systems required to perform their work.
+
+We establish how work should be carried out.
+
+Finally, we evaluate whether the intended outcome has actually been achieved.
+
+Designing an AI agent follows the same progression.
+
+</p>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>If you hired a new employee...</th>
+
+<th>When building an AI agent...</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Define their role</td>
+
+<td><strong>Identity</strong></td>
+
+</tr>
+
+<tr>
+
+<td>Teach them how the business works</td>
+
+<td><strong>Knowledge</strong></td>
+
+</tr>
+
+<tr>
+
+<td>Give them access to company systems</td>
+
+<td><strong>Capabilities</strong></td>
+
+</tr>
+
+<tr>
+
+<td>Explain how work should be performed</td>
+
+<td><strong>Execution</strong></td>
+
+</tr>
+
+<tr>
+
+<td>Review completed work</td>
+
+<td><strong>Verification</strong></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="takeaway">
+
+<h4>Mental Model</h4>
+
+<p>
+
+Throughout this article, think of the agent as a skilled employee being onboarded into a role.
+
+The four pillars simply organise everything that employee requires to perform their work successfully.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="philosophy">
+
+<div class="wrapper">
+
+<h2>
+
+Design Philosophy
+
+</h2>
+
+<div class="quote">
+
+<p>
+
+A practical AI agent should be the smallest system capable of reliably completing its intended outcomes.
+
+</p>
+
+</div>
+
+<p>
+
+This philosophy influences every architectural decision throughout the framework.
+
+The objective is not to build the most autonomous agent, nor the one with the greatest number of capabilities.
+
+Instead, the objective is to build only what is necessary for the agent to reliably achieve its intended outcomes.
+
+</p>
+
+<p>
+
+Should every document become part of the prompt?
+
+Probably not.
+
+Should every agent have browser access?
+
+Only if the goal requires it.
+
+Should every problem be solved with an agent?
+
+Certainly not.
+
+</p>
+
+<p>
+
+The challenge isn't building increasingly complex systems.
+
+The challenge is building systems that are complete, reliable, and intentionally designed.
+
+</p>
+
+</div>
+
+</section>
+<section id="contents">
+
+<div class="wrapper">
+
+<div class="toc">
+
+<h3>
+
+Contents
+
+</h3>
+
+<ol>
+
+<li>
+<a href="#framework">
+The Practical AI Agent Framework
+</a>
+</li>
+
+<li>
+<a href="#identity">
+Pillar One — Identity
+</a>
+</li>
+
+<li>
+<a href="#knowledge">
+Pillar Two — Knowledge
+</a>
+</li>
+
+<li>
+<a href="#capabilities">
+Pillar Three — Capabilities
+</a>
+</li>
+
+<li>
+<a href="#execution">
+Pillar Four — Execution
+</a>
+</li>
+
+<li>
+<a href="#principles">
+Design Principles
+</a>
+</li>
+
+<li>
+Putting the Framework into Practice
+</li>
+
+<li>
+Architecture vs Implementation
+</li>
+
+<li>
+Conclusion
+</li>
+
+</ol>
+
+</div>
+
+</div>
+
+</section>
+<section id="framework">
+
+<div class="wrapper">
+
+<h2>
+
+The Practical AI Agent Framework
+
+</h2>
+
+<p>
+
+The framework is built around four architectural pillars.
+
+Each pillar answers a different design question.
+
+Together, they define the minimum architectural components required for an AI agent to reliably accomplish real-world work.
+
+</p>
+
+<table>
+
+<tr>
+
+<th>Pillar</th>
+
+<th>Question Answered</th>
+
+</tr>
+
+<tr>
+
+<td><strong>Identity</strong></td>
+
+<td>Who am I?</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Knowledge</strong></td>
+
+<td>What do I need to know?</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Capabilities</strong></td>
+
+<td>What systems can I interact with?</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Execution</strong></td>
+
+<td>How do I accomplish work?</td>
+
+</tr>
+
+</table>
+
+<figure class="framework-diagram">
+
+    <object
+        type="image/svg+xml"
+        data="framework.svg"
+        aria-label="The Practical AI Agent Framework">
+    </object>
+
+    <figcaption>
+
+        Figure 1 — The Practical AI Agent Framework
+
+    </figcaption>
+
+</figure>
+
+<p>
+
+The pillars are intentionally independent.
+
+Identity is not a subset of Knowledge.
+
+Capabilities are not part of Execution.
+
+Knowledge is not simply Retrieval-Augmented Generation (RAG).
+
+Separating these concerns produces systems that are easier to design, reason about, and evolve over time.
+
+</p>
+
+</div>
+
+</section>
+<section id="identity">
+
+    <div class="wrapper">
+
+        <h2>Pillar One — Identity</h2>
+
+        <p>
+            Identity answers one of the most fundamental architectural questions:
+            <strong>Who is this agent?</strong>
+        </p>
+
+        <p>
+            Identity defines the role the agent plays, the responsibilities it owns,
+            the constraints it operates within, and the way it communicates.
+            It establishes the behavioural boundaries that remain consistent across every task.
+        </p>
+
+        <p>
+            A well-designed Identity answers questions such as:
+        </p>
+
+        <ul>
+
+            <li>What responsibilities does this agent own?</li>
+
+            <li>What is it explicitly not responsible for?</li>
+
+            <li>How should it communicate?</li>
+
+            <li>How much confidence should it require before acting?</li>
+
+            <li>What high-level process should it generally follow?</li>
+
+            <li>What rules must always be respected?</li>
+
+        </ul>
+
+        <h3>Example Identity</h3>
+
+        <div class="takeaway">
+
+            <p>
+
+            <strong>You are a Senior Product Analytics Specialist.</strong><br><br>
+
+            Prioritize correctness over speed.<br>
+
+            Never invent metrics.<br>
+
+            Always explain assumptions.<br>
+
+            Support conclusions using evidence.<br>
+
+            If evidence is insufficient, clearly communicate what additional information is required.
+
+            </p>
+
+        </div>
+
+        <p>
+
+            Notice what is intentionally absent.
+
+        </p>
+
+        <p>
+
+            Database schemas.
+
+            Event definitions.
+
+            Metric documentation.
+
+            Business rules.
+
+        </p>
+
+        <p>
+
+            Those are not part of Identity.
+
+            They belong elsewhere.
+
+        </p>
+
+        <div class="takeaway">
+
+            <h4>Design Takeaway</h4>
+
+            <p>
+
+                Identity defines behaviour—not business knowledge.
+
+                Think of it as the role description you would give a newly hired employee.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="knowledge">
+
+    <div class="wrapper">
+
+        <h2>Pillar Two — Knowledge</h2>
+
+        <p>
+
+            Knowledge is often treated as a single concept.
+
+            In practice, it is not.
+
+        </p>
+
+        <p>
+
+            Different kinds of information have different lifecycles,
+            different retrieval patterns,
+            and different purposes.
+
+            Treating everything as "context" usually leads to bloated prompts,
+            unnecessary token usage,
+            and poorer reasoning.
+
+        </p>
+
+        <p>
+
+            Instead, the framework separates knowledge into three distinct categories.
+
+        </p>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Knowledge Type</th>
+
+                    <th>Purpose</th>
+
+                    <th>Typical Lifetime</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td><strong>Operating Knowledge</strong></td>
+
+                    <td>Stable knowledge required to perform the role.</td>
+
+                    <td>Long-lived</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Retrieved Knowledge</strong></td>
+
+                    <td>Information retrieved only when needed.</td>
+
+                    <td>Per task</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Runtime Context</strong></td>
+
+                    <td>The evolving working state of the current task.</td>
+
+                    <td>During execution</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <figure class="framework-diagram">
+
+            <object
+                type="image/svg+xml"
+                data="knowledge.svg"
+                aria-label="Knowledge Architecture">
+            </object>
+
+            <figcaption>
+
+                Figure 2 — Knowledge Architecture
+
+            </figcaption>
+
+        </figure>
+
+        <h3>Operating Knowledge</h3>
+
+        <p>
+
+            Operating Knowledge contains information that the agent depends on repeatedly while performing its role.
+
+            It is not occasional reference material.
+
+            It forms part of the agent's operational understanding.
+
+        </p>
+
+        <p>
+
+            Examples include:
+
+        </p>
+
+        <ul>
+
+            <li>Database schemas</li>
+
+            <li>Event definitions</li>
+
+            <li>Business metrics</li>
+
+            <li>API contracts</li>
+
+            <li>Query conventions</li>
+
+            <li>Domain terminology</li>
+
+            <li>Coding standards</li>
+
+        </ul>
+
+        <p>
+
+            Consider an Analytics Agent.
+
+            Every investigation depends on understanding event definitions,
+            metric calculations,
+            and warehouse schemas.
+
+            These are not documents that should be rediscovered every time through retrieval.
+
+            They are foundational knowledge required for almost every task.
+
+        </p>
+
+        <h3>Retrieved Knowledge</h3>
+
+        <p>
+
+            Not every piece of information belongs inside the agent.
+
+            Many information sources change frequently and should only be retrieved when relevant.
+
+        </p>
+
+        <p>
+
+            Examples include:
+
+        </p>
+
+        <ul>
+
+            <li>Internal documentation</li>
+
+            <li>PRDs</li>
+
+            <li>Wiki pages</li>
+
+            <li>PDFs</li>
+
+            <li>Customer records</li>
+
+            <li>Incident reports</li>
+
+            <li>Release notes</li>
+
+        </ul>
+
+        <p>
+
+            Retrieved Knowledge keeps the agent lightweight while still allowing it to access large and constantly changing information sources.
+
+        </p>
+
+        <h3>Runtime Context</h3>
+
+        <p>
+
+            Runtime Context is the agent's working memory while performing the current task.
+
+            It is created continuously during execution.
+
+        </p>
+
+        <p>
+
+            Typical Runtime Context includes:
+
+        </p>
+
+        <ul>
+
+            <li>Conversation history</li>
+
+            <li>SQL results</li>
+
+            <li>Browser observations</li>
+
+            <li>API responses</li>
+
+            <li>Intermediate findings</li>
+
+            <li>Current hypotheses</li>
+
+            <li>Execution plans</li>
+
+            <li>Tool outputs</li>
+
+        </ul>
+
+        <p>
+
+            Runtime Context should not grow indefinitely.
+
+            As execution progresses, the agent should continuously determine what remains useful,
+            what can be summarized,
+            and what can be discarded.
+
+        </p>
+
+        <div class="takeaway">
+
+            <h4>Design Takeaway</h4>
+
+            <p>
+
+                Architect knowledge according to its purpose and lifecycle.
+
+                Stable Operating Knowledge, dynamically Retrieved Knowledge,
+                and Runtime Context solve different problems and should be managed independently.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="capabilities">
+
+    <div class="wrapper">
+
+        <h2>Pillar Three — Capabilities</h2>
+
+        <p>
+
+            Knowledge tells an agent what it knows.
+
+            Capabilities determine what it can do.
+
+        </p>
+
+        <p>
+
+            A practical AI agent rarely creates value by producing text alone.
+            It creates value by interacting with the systems required to complete a real-world job.
+
+        </p>
+
+        <p>
+
+            Instead of asking <em>"Which tools should I connect?"</em>,
+            the better design question is:
+
+        </p>
+
+        <div class="quote">
+
+            <p>
+
+                What actions must this agent be able to perform to reliably deliver its intended outcomes?
+
+            </p>
+
+        </div>
+
+        <p>
+
+            The answer depends entirely on the problem being solved.
+
+            An analytics agent may require SQL execution and Python.
+
+            A customer support agent may need access to a CRM and ticketing system.
+
+            A shopping assistant may require browser automation and payment APIs.
+
+            There is no universal capability set.
+
+        </p>
+
+        <figure class="framework-diagram">
+
+            <object
+                type="image/svg+xml"
+                data="capabilities.svg"
+                aria-label="Capabilities connect the agent to the external world">
+            </object>
+
+            <figcaption>
+
+                Figure 3 — Capabilities connect the agent to the external world.
+
+            </figcaption>
+
+        </figure>
+
+        <h3>Examples of Capabilities</h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Capability</th>
+
+                    <th>Typical Operations</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>SQL</td>
+
+                    <td>Execute queries, inspect schemas, validate data.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Browser</td>
+
+                    <td>Navigate websites, authenticate, click, submit forms, download information.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Vision</td>
+
+                    <td>Interpret screenshots, UI elements, diagrams and documents.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>OCR</td>
+
+                    <td>Extract text from scanned documents and images.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Python</td>
+
+                    <td>Analysis, statistics, visualisation and computation.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Internal APIs</td>
+
+                    <td>Create records, update systems, trigger workflows.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Messaging</td>
+
+                    <td>Send email, Slack or Teams notifications.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h3>When an Agent May Not Be Necessary</h3>
+
+        <p>
+
+            This framework intentionally begins with the user's goal.
+
+            Sometimes, the analysis reveals that an agent is unnecessary.
+
+        </p>
+
+        <p>
+
+            If the task simply requires generating text from a stable prompt,
+            requires no external interaction,
+            performs no reasoning over changing information,
+            and never needs to complete work beyond producing an answer,
+            a reusable prompt or workflow may be sufficient.
+
+        </p>
+
+        <p>
+
+            Agents become valuable when they must reason, make decisions, interact with external systems, and complete multi-step work on behalf of a user.
+
+        </p>
+
+        <div class="takeaway">
+
+            <h4>Design Takeaway</h4>
+
+            <p>
+
+                Don't add capabilities because they exist.
+                Add only those required to reliably deliver the intended outcome.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="execution">
+
+    <div class="wrapper">
+
+        <h2>Pillar Four — Execution</h2>
+
+        <p>
+
+            Identity defines behaviour.
+
+            Knowledge provides understanding.
+
+            Capabilities enable action.
+
+        </p>
+
+        <p>
+
+            Execution brings them together.
+
+        </p>
+
+        <p>
+
+            Every task follows an execution loop.
+
+            Although implementation details vary between frameworks,
+            the underlying reasoning pattern remains remarkably consistent.
+
+        </p>
+
+        <figure class="framework-diagram">
+
+            <object
+                type="image/svg+xml"
+                data="execution.svg"
+                aria-label="The Practical AI Agent Execution Loop">
+            </object>
+
+            <figcaption>
+
+                Figure 4 — The Practical AI Agent Execution Loop
+
+            </figcaption>
+
+        </figure>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Step</th>
+
+                    <th>Purpose</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td><strong>Observe</strong></td>
+
+                    <td>Understand the user's request and current state.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Reason</strong></td>
+
+                    <td>Determine what information or actions are required.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Select</strong></td>
+
+                    <td>Choose the knowledge and capabilities most appropriate for the current step.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Act</strong></td>
+
+                    <td>Execute the selected capability.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Manage Runtime Context</strong></td>
+
+                    <td>Update, summarise or discard information as execution progresses.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Verify</strong></td>
+
+                    <td>Determine whether the intended outcome has actually been achieved.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h3>The Importance of Selection</h3>
+
+        <p>
+
+            One of the least discussed aspects of agent design is selection.
+
+        </p>
+
+        <p>
+
+            At every step, the agent must decide:
+
+        </p>
+
+        <ul>
+
+            <li>Which knowledge is relevant?</li>
+
+            <li>Which capability should be used?</li>
+
+            <li>Which previous observations still matter?</li>
+
+            <li>Which information can be ignored?</li>
+
+            <li>Is enough evidence available to continue?</li>
+
+        </ul>
+
+        <p>
+
+            Better foundation models generally make better selections.
+            They retrieve more relevant information, choose more appropriate capabilities, and avoid unnecessary actions.
+
+            The surrounding architecture, however, determines <em>what choices are available</em>.
+            Even the most capable model cannot select information or capabilities that were never provided.
+
+        </p>
+
+        <div class="takeaway">
+
+            <h4>Design Takeaway</h4>
+
+            <p>
+
+                Intelligence determines how well the agent makes decisions.
+                Architecture determines what decisions it is able to make.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="principles">
+
+    <div class="wrapper">
+
+        <h2>Design Principles</h2>
+
+        <p>
+
+            The four pillars describe the architecture of a practical AI agent.
+
+            The following principles describe how that architecture should be applied.
+
+            Together, they form a practical approach for designing agents that reliably complete real-world work.
+
+        </p>
+
+        <div class="takeaway">
+
+            <h4>Principle 1</h4>
+
+            <h3>Start with the Goal, Not the Model</h3>
+
+            <p>
+
+                Every agent begins with a user outcome.
+
+                Before choosing a model, prompt, framework or orchestration library,
+                clearly define the work the agent is expected to complete.
+
+            </p>
+
+            <p>
+
+                The goal determines the agent's Identity, Knowledge, Capabilities and Execution.
+
+            </p>
+
+        </div>
+
+        <div class="takeaway">
+
+            <h4>Principle 2</h4>
+
+            <h3>Design for Outcomes, Not Responses</h3>
+
+            <p>
+
+                Success is not measured by producing convincing text.
+
+                Success is measured by reliably completing the intended work.
+
+            </p>
+
+            <p>
+
+                The response is only one step toward the outcome.
+
+            </p>
+
+        </div>
+
+        <div class="takeaway">
+
+            <h4>Principle 3</h4>
+
+            <h3>Identity Defines Behaviour</h3>
+
+            <p>
+
+                Identity establishes how the agent should think, communicate and operate.
+
+                It defines behaviour.
+
+                It should never become a container for business knowledge.
+
+            </p>
+
+        </div>
+
+        <div class="takeaway">
+
+            <h4>Principle 4</h4>
+
+            <h3>Architect Knowledge by Purpose and Lifecycle</h3>
+
+            <p>
+
+                Not all knowledge belongs in the same place.
+
+                Separate stable Operating Knowledge, dynamically Retrieved Knowledge and evolving Runtime Context.
+
+                Each serves a different purpose and should be managed independently.
+
+            </p>
+
+        </div>
+
+        <div class="takeaway">
+
+            <h4>Principle 5</h4>
+
+            <h3>Equip the Agent with the Capabilities Required to Deliver the Intended Outcomes</h3>
+
+            <p>
+
+                Capabilities should be selected because they are necessary,
+                not because they are available.
+
+                Every capability should directly contribute to accomplishing the user's goal.
+
+            </p>
+
+        </div>
+
+        <div class="takeaway">
+
+            <h4>Principle 6</h4>
+
+            <h3>Minimize Unnecessary Context While Preserving Reliable Outcomes</h3>
+
+            <p>
+
+                Every additional token consumes attention, cost and reasoning capacity.
+
+                Continuously question whether each piece of context genuinely improves the agent's ability to complete the task.
+
+            </p>
+
+            <p>
+
+                A practical AI agent should be the smallest system capable of reliably completing its intended outcomes.
+
+            </p>
+
+        </div>
+
+        <div class="takeaway">
+
+            <h4>Principle 7</h4>
+
+            <h3>Verify Completion Before Declaring Success</h3>
+
+            <p>
+
+                Executing actions is not enough.
+
+                The agent should determine whether the intended outcome has actually been achieved.
+
+                If not, execution should continue.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="example">
+
+    <div class="wrapper">
+
+        <h2>Putting the Framework into Practice</h2>
+
+        <p>
+
+            Frameworks are only useful if they improve architectural decisions.
+
+            Let's apply the framework to a simple example.
+
+        </p>
+
+        <div class="quote">
+
+            <p>
+
+                User Goal:
+                "Why did subscriber growth decline last week compared to the previous month?"
+
+            </p>
+
+        </div>
+
+        <h3>Identity</h3>
+
+        <p>
+
+            The agent is a Senior Product Analytics Specialist.
+
+            It prioritizes correctness over speed,
+            supports conclusions using evidence,
+            and clearly communicates uncertainty.
+
+        </p>
+
+        <h3>Knowledge</h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Knowledge Type</th>
+
+                    <th>Examples</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Operating Knowledge</td>
+
+                    <td>Schemas, event definitions, metrics, query conventions.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Retrieved Knowledge</td>
+
+                    <td>Experiment documentation, PRDs, launch notes.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Runtime Context</td>
+
+                    <td>User request, SQL results, observations, intermediate findings.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h3>Capabilities</h3>
+
+        <ul>
+
+            <li>SQL execution</li>
+
+            <li>Python analysis</li>
+
+            <li>Documentation search</li>
+
+            <li>Chart generation</li>
+
+        </ul>
+
+        <h3>Execution</h3>
+
+        <p>
+
+            The agent observes the user's request.
+
+            It reasons about which information is required.
+
+            It selects SQL.
+
+            It executes queries.
+
+            It updates Runtime Context with the results.
+
+            It verifies whether enough evidence exists to explain the decline.
+
+            If not, the loop repeats.
+
+        </p>
+
+        <figure class="framework-diagram">
+
+            <object
+                type="image/svg+xml"
+                data="analytics.svg"
+                aria-label="Applying the Framework to an Analytics Agent">
+            </object>
+
+            <figcaption>
+
+                Figure 5 — Applying the Framework to an Analytics Agent
+
+            </figcaption>
+
+        </figure>
+
+        <div class="takeaway">
+
+            <h4>Design Takeaway</h4>
+
+            <p>
+
+                Instead of asking
+                "Should this go into the prompt?"
+
+                ask
+
+                "Which architectural pillar does this belong to?"
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="architecture">
+
+    <div class="wrapper">
+
+        <h2>Architecture Before Implementation</h2>
+
+        <p>
+
+            One of the goals of this framework is to remain independent of today's implementation choices.
+
+        </p>
+
+        <p>
+
+            Foundation models will improve.
+
+            Context windows will grow.
+
+            New orchestration frameworks will emerge.
+
+            Better retrieval techniques will be developed.
+
+            Implementation details will continue to evolve.
+
+        </p>
+
+        <p>
+
+            The architectural questions, however, remain remarkably stable.
+
+        </p>
+
+        <div class="quote">
+
+            <p>
+
+                Good architecture should survive changes in technology.
+
+            </p>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Architectural Component</th>
+
+                    <th>Possible Implementations</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td><strong>Identity</strong></td>
+
+                    <td>System Prompt, Instruction Templates, Policy Files</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Operating Knowledge</strong></td>
+
+                    <td>Prompt Context, Structured Configuration, Knowledge Files</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Retrieved Knowledge</strong></td>
+
+                    <td>RAG, Search, SQL Retrieval, Documentation Search, Knowledge Bases</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Runtime Context</strong></td>
+
+                    <td>Conversation History, Tool Outputs, Memory, Summaries</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Capabilities</strong></td>
+
+                    <td>MCP, APIs, Browser Automation, SQL, Vision, Python, OCR</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Execution</strong></td>
+
+                    <td>OpenAI Agents SDK, LangGraph, CrewAI, AutoGen, Semantic Kernel, Custom Orchestration</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <p>
+
+            This distinction is important.
+
+        </p>
+
+        <p>
+
+            Discussions around AI agents often begin by comparing orchestration libraries, prompting techniques or retrieval methods.
+
+            Those are implementation decisions.
+
+            They matter.
+
+            But they should come after the architecture has been designed.
+
+        </p>
+
+        <div class="takeaway">
+
+            <h4>Design Takeaway</h4>
+
+            <p>
+
+                Separate architectural decisions from implementation decisions.
+
+                Architecture determines what the system should be capable of.
+
+                Implementation determines how those capabilities are realised.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="conclusion">
+
+    <div class="wrapper">
+
+        <h2>Final Thoughts</h2>
+
+        <p>
+
+            AI agents are becoming increasingly capable.
+
+            Yet many conversations about building them still begin with prompts, models, or orchestration frameworks.
+
+            Those are important decisions.
+
+            They simply are not the first ones.
+
+        </p>
+
+        <p>
+
+            Before choosing a model, define the goal.
+
+            Before writing a prompt, define the Identity.
+
+            Before connecting a vector database, determine what knowledge the agent actually requires.
+
+            Before adding every available capability, ask which actions are genuinely necessary to complete the user's work.
+
+            Before increasing context, ask whether every piece of information contributes to a more reliable outcome.
+
+        </p>
+
+        <p>
+
+            In many ways, designing an AI agent is remarkably similar to onboarding a skilled employee.
+
+        </p>
+
+        <ul>
+
+            <li>Define their role.</li>
+
+            <li>Teach them what they need to know.</li>
+
+            <li>Provide access to the right systems.</li>
+
+            <li>Establish how work should be performed.</li>
+
+            <li>Evaluate them based on the outcomes they deliver.</li>
+
+        </ul>
+
+        <p>
+
+            The same discipline produces better AI agents.
+
+        </p>
+
+        <p>
+
+            Not because it creates more sophisticated systems.
+
+            But because it creates systems that are easier to understand, easier to maintain and ultimately more reliable.
+
+        </p>
+
+        <div class="quote">
+
+            <p>
+
+                The challenge isn't building the biggest AI agent.
+
+                It's building the smallest system capable of reliably completing its intended outcomes.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+</article>
+</main>
+
+<footer>
+
+<hr>
+
+<p class="footer-title">
+
+The Practical AI Agent Framework
+
+</p>
+
+<p>
+
+Version 1.0
+
+</p>
+
+<p>
+
+© 2026 AB (Abhilash) Bhagat
+
+</p>
+
+</footer>
+
+<script>
+
+const progress=document.querySelector(".progress-bar");
+
+window.addEventListener("scroll",()=>{
+
+const winScroll=
+
+document.documentElement.scrollTop;
+
+const height=
+
+document.documentElement.scrollHeight-
+
+document.documentElement.clientHeight;
+
+progress.style.width=
+
+(winScroll/height)*100+"%";
+
+});
+
+</script>
+
+</body>
+
+</html>

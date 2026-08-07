@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg width="1200" height="900" viewBox="0 0 1200 900"
+     xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<style><![CDATA[
+.heading{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Helvetica,sans-serif;
+font-size:20px;
+font-weight:600;
+fill:#1D1D1F;
+letter-spacing:.8px;
+}
+.sub{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,sans-serif;
+font-size:14px;
+fill:#6E6E73;
+}
+.center{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Helvetica,sans-serif;
+font-size:26px;
+font-weight:600;
+fill:#1D1D1F;
+}
+.node{
+fill:#FFFFFF;
+stroke:#D2D2D7;
+stroke-width:2;
+}
+.line{
+stroke:#D2D2D7;
+stroke-width:2;
+stroke-linecap:round;
+}
+.blue{
+fill:#0071E3;
+}
+]]></style>
+</defs>
+
+<!-- Centre -->
+<circle cx="600" cy="450" r="92" class="node"/>
+<circle cx="600" cy="450" r="7" class="blue"/>
+
+<text x="600" y="445" text-anchor="middle" class="center">
+Practical
+</text>
+
+<text x="600" y="478" text-anchor="middle" class="center">
+AI Agent
+</text>
+
+<!-- DATA -->
+<line class="line" x1="600" y1="358" x2="600" y2="210"/>
+<circle cx="600" cy="165" r="48" class="node"/>
+<text x="600" y="160" text-anchor="middle" class="heading">Data</text>
+<text x="600" y="182" text-anchor="middle" class="sub">SQL • Warehouses</text>
+
+<!-- AUTOMATION -->
+<line class="line" x1="525" y1="395" x2="320" y2="265"/>
+<circle cx="270" cy="235" r="54" class="node"/>
+<text x="270" y="230" text-anchor="middle" class="heading">Automation</text>
+<text x="270" y="252" text-anchor="middle" class="sub">Browser • Workflows</text>
+
+<!-- MEDIA -->
+<line class="line" x1="525" y1="505" x2="320" y2="635"/>
+<circle cx="270" cy="665" r="54" class="node"/>
+<text x="270" y="660" text-anchor="middle" class="heading">Media</text>
+<text x="270" y="682" text-anchor="middle" class="sub">Vision • OCR • Audio</text>
+
+<!-- COMPUTATION -->
+<line class="line" x1="675" y1="395" x2="880" y2="265"/>
+<circle cx="930" cy="235" r="54" class="node"/>
+<text x="930" y="230" text-anchor="middle" class="heading">Computation</text>
+<text x="930" y="252" text-anchor="middle" class="sub">Python • Code</text>
+
+<!-- ENTERPRISE -->
+<line class="line" x1="692" y1="450" x2="905" y2="450"/>
+<circle cx="965" cy="450" r="58" class="node"/>
+<text x="965" y="445" text-anchor="middle" class="heading">Enterprise</text>
+<text x="965" y="467" text-anchor="middle" class="sub">CRM • ERP • APIs</text>
+
+<!-- COMMUNICATION -->
+<line class="line" x1="675" y1="505" x2="880" y2="635"/>
+<circle cx="930" cy="665" r="54" class="node"/>
+<text x="930" y="660" text-anchor="middle" class="heading">Communication</text>
+<text x="930" y="682" text-anchor="middle" class="sub">Email • Slack • Teams</text>
+
+<!-- FILES -->
+<line class="line" x1="600" y1="542" x2="600" y2="690"/>
+<circle cx="600" cy="735" r="48" class="node"/>
+<text x="600" y="730" text-anchor="middle" class="heading">Documents</text>
+<text x="600" y="752" text-anchor="middle" class="sub">Files • PDFs • Images</text>
+
+</svg>

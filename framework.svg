@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg width="1200" height="900" viewBox="0 0 1200 900"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+        <style><![CDATA[
+            .heading{
+                font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;
+                font-size:22px;
+                font-weight:700;
+                fill:#1D1D1F;
+                letter-spacing:1.2px;
+            }
+            .question{
+                font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;
+                font-size:17px;
+                font-weight:400;
+                fill:#6E6E73;
+            }
+            .caption{
+                font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;
+                font-size:24px;
+                font-weight:600;
+                fill:#1D1D1F;
+            }
+            .line{
+                stroke:#D2D2D7;
+                stroke-width:2;
+                stroke-linecap:round;
+            }
+            .star{
+                fill:#0071E3;
+            }
+        ]]></style>
+    </defs>
+
+    <!-- TOP -->
+    <text x="600" y="120"
+          text-anchor="middle"
+          class="heading">
+        IDENTITY
+    </text>
+
+    <text x="600"
+          y="156"
+          text-anchor="middle"
+          class="question">
+        Who am I?
+    </text>
+
+    <!-- LEFT -->
+    <text x="155"
+          y="420"
+          class="heading">
+        KNOWLEDGE
+    </text>
+
+    <text x="155"
+          y="456"
+          class="question">
+        What do I need to know?
+    </text>
+
+    <!-- RIGHT -->
+    <text x="845"
+          y="420"
+          class="heading">
+        CAPABILITIES
+    </text>
+
+    <text x="845"
+          y="456"
+          class="question">
+        What can I do?
+    </text>
+
+    <!-- BOTTOM -->
+    <text x="600"
+          y="760"
+          text-anchor="middle"
+          class="heading">
+        EXECUTION
+    </text>
+
+    <text x="600"
+          y="796"
+          text-anchor="middle"
+          class="question">
+        How do I accomplish work?
+    </text>
+
+    <!-- CONNECTIONS -->
+    <line class="line"
+          x1="600"
+          y1="205"
+          x2="600"
+          y2="408"/>
+
+    <line class="line"
+          x1="600"
+          y1="492"
+          x2="600"
+          y2="675"/>
+
+    <line class="line"
+          x1="325"
+          y1="450"
+          x2="560"
+          y2="450"/>
+
+    <line class="line"
+          x1="640"
+          y1="450"
+          x2="875"
+          y2="450"/>
+
+    <!-- STAR -->
+    <g transform="translate(600,450)">
+        <!-- vertical -->
+        <path class="star"
+              d="M0,-20
+                 C3,-8 3,-3 12,0
+                 C3,3 3,8 0,20
+                 C-3,8 -3,3 -12,0
+                 C-3,-3 -3,-8 0,-20Z"/>
+
+        <!-- horizontal -->
+        <path class="star"
+              d="M-20,0
+                 C-8,-3 -3,-3 0,-12
+                 C3,-3 8,-3 20,0
+                 C8,3 3,3 0,12
+                 C-3,3 -8,3 -20,0Z"/>
+
+        <!-- centre -->
+        <circle r="3.8" fill="#FFFFFF"/>
+    </g>
+
+    <!-- CAPTION -->
+    <text x="600"
+          y="565"
+          text-anchor="middle"
+          class="caption">
+        The Practical AI Agent
+    </text>
+
+</svg>

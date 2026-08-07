@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg width="1200" height="900" viewBox="0 0 1200 900"
+     xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<style><![CDATA[
+.heading{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Helvetica,sans-serif;
+font-size:22px;
+font-weight:600;
+fill:#1D1D1F;
+letter-spacing:.8px;
+}
+.sub{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,sans-serif;
+font-size:16px;
+fill:#6E6E73;
+}
+.small{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,sans-serif;
+font-size:15px;
+fill:#6E6E73;
+}
+.boxtitle{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Helvetica,sans-serif;
+font-size:20px;
+font-weight:600;
+fill:#1D1D1F;
+}
+.item{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,sans-serif;
+font-size:15px;
+fill:#6E6E73;
+}
+.box{
+fill:white;
+stroke:#D2D2D7;
+stroke-width:2;
+rx:20;
+}
+.line{
+stroke:#D2D2D7;
+stroke-width:2;
+stroke-linecap:round;
+}
+.blue{
+fill:#0071E3;
+}
+]]></style>
+</defs>
+
+<!-- operating -->
+<rect class="box"
+      x="250"
+      y="90"
+      width="700"
+      height="180"
+      rx="24"/>
+
+<text x="600"
+      y="135"
+      text-anchor="middle"
+      class="boxtitle">
+Operating Knowledge
+</text>
+
+<text x="600"
+      y="170"
+      text-anchor="middle"
+      class="sub">
+Stable knowledge always available to the agent
+</text>
+
+<text x="600"
+      y="215"
+      text-anchor="middle"
+      class="item">
+Schemas • Event Definitions • Metrics • Business Rules • APIs • Query Patterns
+</text>
+
+<!-- arrow -->
+<line class="line"
+      x1="600"
+      y1="270"
+      x2="600"
+      y2="345"/>
+
+<circle cx="600"
+        cy="345"
+        r="4"
+        class="blue"/>
+
+<!-- retrieved -->
+<rect class="box"
+      x="250"
+      y="365"
+      width="700"
+      height="180"
+      rx="24"/>
+
+<text x="600"
+      y="410"
+      text-anchor="middle"
+      class="boxtitle">
+Retrieved Knowledge
+</text>
+
+<text x="600"
+      y="445"
+      text-anchor="middle"
+      class="sub">
+Fetched only when required
+</text>
+
+<text x="600"
+      y="490"
+      text-anchor="middle"
+      class="item">
+Documentation • PRDs • PDFs • Wikis • Customer Records • Search Results
+</text>
+
+<!-- arrow -->
+<line class="line"
+      x1="600"
+      y1="545"
+      x2="600"
+      y2="620"/>
+
+<circle cx="600"
+        cy="620"
+        r="4"
+        class="blue"/>
+
+<!-- runtime -->
+<rect class="box"
+      x="250"
+      y="640"
+      width="700"
+      height="180"
+      rx="24"/>
+
+<text x="600"
+      y="685"
+      text-anchor="middle"
+      class="boxtitle">
+Runtime Context
+</text>
+
+<text x="600"
+      y="720"
+      text-anchor="middle"
+      class="sub">
+The agent's current working state
+</text>
+
+<text x="600"
+      y="765"
+      text-anchor="middle"
+      class="item">
+Conversation • Tool Results • Observations • Plans • Intermediate Findings
+</text>
+
+</svg>
