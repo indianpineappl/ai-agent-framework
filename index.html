@@ -539,6 +539,239 @@ display:block;
 margin:auto;
 
 }
+
+.section-kicker{
+font-size:14px;
+font-weight:600;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--accent);
+margin-bottom:12px;
+}
+
+.article-section{
+padding:90px 0;
+}
+
+.callout{
+background:white;
+padding:34px;
+border-radius:24px;
+margin:46px 0;
+box-shadow:var(--shadow);
+border-left:4px solid var(--accent);
+}
+
+.callout p{
+font-size:18px;
+margin:0 0 10px;
+}
+
+.callout p:last-child{
+margin-bottom:0;
+}
+
+.callout-emphasis{
+background:#F2F8FF;
+border-left-color:var(--accent);
+}
+
+.flow-list{
+margin:46px 0;
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.flow-step{
+display:flex;
+gap:20px;
+align-items:flex-start;
+background:white;
+padding:24px 28px;
+border-radius:18px;
+box-shadow:var(--shadow);
+}
+
+.flow-number{
+font-size:28px;
+font-weight:700;
+color:var(--accent);
+min-width:44px;
+line-height:1;
+}
+
+.flow-step strong{
+font-size:18px;
+display:block;
+margin-bottom:6px;
+}
+
+.flow-step p{
+font-size:16px;
+margin:0;
+color:var(--secondary);
+}
+
+.comparison-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+margin:46px 0;
+}
+
+.comparison-card{
+background:white;
+padding:34px;
+border-radius:24px;
+box-shadow:var(--shadow);
+border:2px solid var(--border);
+}
+
+.comparison-card-primary{
+border-color:var(--accent);
+background:#F2F8FF;
+}
+
+.comparison-label{
+font-size:13px;
+font-weight:600;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(--accent);
+margin-bottom:10px;
+}
+
+.comparison-card h3{
+font-size:22px;
+margin:0 0 16px;
+}
+
+.comparison-card ul{
+padding-left:20px;
+margin-bottom:16px;
+}
+
+.comparison-card li{
+font-size:17px;
+margin-bottom:8px;
+color:var(--secondary);
+}
+
+.comparison-card p{
+font-size:16px;
+margin:0;
+color:var(--secondary);
+}
+
+.pillar-summary{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+margin:46px 0;
+}
+
+.pillar-summary-item{
+background:white;
+padding:28px;
+border-radius:20px;
+box-shadow:var(--shadow);
+}
+
+.pillar-summary-number{
+font-size:28px;
+font-weight:700;
+color:var(--accent);
+display:block;
+margin-bottom:8px;
+}
+
+.pillar-summary-item strong{
+font-size:18px;
+display:block;
+margin-bottom:8px;
+}
+
+.pillar-summary-item p{
+font-size:16px;
+margin:0;
+color:var(--secondary);
+}
+
+.final-statement{
+margin:60px 0;
+padding:50px 40px;
+background:white;
+border-radius:28px;
+box-shadow:var(--shadow);
+text-align:center;
+}
+
+.final-statement-large{
+font-size:28px;
+font-weight:600;
+letter-spacing:-.02em;
+line-height:1.35;
+margin-bottom:18px;
+}
+
+.final-statement-supporting{
+font-size:18px;
+color:var(--secondary);
+margin:0;
+}
+
+.closing-note{
+font-size:17px;
+color:var(--secondary);
+font-style:italic;
+margin-top:40px;
+}
+
+.conclusion-section{
+padding-bottom:60px;
+}
+
+.knowledge-table{
+width:100%;
+border-collapse:collapse;
+margin:50px 0;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.knowledge-table th{
+text-align:left;
+font-size:15px;
+padding:22px;
+background:#f5f5f7;
+}
+
+.knowledge-table td{
+padding:20px;
+border-top:1px solid var(--border);
+vertical-align:top;
+}
+
+.footer-title{
+font-size:20px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+@media(max-width:768px){
+.comparison-grid,
+.pillar-summary{
+grid-template-columns:1fr;
+}
+.flow-step{
+flex-direction:column;
+gap:12px;
+}
+}
+
 .toc{
 
 background:white;
@@ -966,15 +1199,21 @@ Design Principles
 </li>
 
 <li>
+<a href="#putting-framework-into-practice">
 Putting the Framework into Practice
+</a>
 </li>
 
 <li>
+<a href="#architecture-vs-implementation">
 Architecture vs Implementation
+</a>
 </li>
 
 <li>
+<a href="#conclusion">
 Conclusion
+</a>
 </li>
 
 </ol>
@@ -1953,386 +2192,395 @@ Separating these concerns produces systems that are easier to design, reason abo
     </div>
 
 </section>
-<section id="example">
 
-    <div class="wrapper">
-
-        <h2>Putting the Framework into Practice</h2>
-
-        <p>
-
-            Frameworks are only useful if they improve architectural decisions.
-
-            Let's apply the framework to a simple example.
-
-        </p>
-
-        <div class="quote">
-
-            <p>
-
-                User Goal:
-                "Why did subscriber growth decline last week compared to the previous month?"
-
-            </p>
-
-        </div>
-
-        <h3>Identity</h3>
-
-        <p>
-
-            The agent is a Senior Product Analytics Specialist.
-
-            It prioritizes correctness over speed,
-            supports conclusions using evidence,
-            and clearly communicates uncertainty.
-
-        </p>
-
-        <h3>Knowledge</h3>
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Knowledge Type</th>
-
-                    <th>Examples</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>Operating Knowledge</td>
-
-                    <td>Schemas, event definitions, metrics, query conventions.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Retrieved Knowledge</td>
-
-                    <td>Experiment documentation, PRDs, launch notes.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Runtime Context</td>
-
-                    <td>User request, SQL results, observations, intermediate findings.</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <h3>Capabilities</h3>
-
-        <ul>
-
-            <li>SQL execution</li>
-
-            <li>Python analysis</li>
-
-            <li>Documentation search</li>
-
-            <li>Chart generation</li>
-
-        </ul>
-
-        <h3>Execution</h3>
-
-        <p>
-
-            The agent observes the user's request.
-
-            It reasons about which information is required.
-
-            It selects SQL.
-
-            It executes queries.
-
-            It updates Runtime Context with the results.
-
-            It verifies whether enough evidence exists to explain the decline.
-
-            If not, the loop repeats.
-
-        </p>
-
-        <figure class="framework-diagram">
-
-            <object
-                type="image/svg+xml"
-                data="analytics.svg"
-                aria-label="Applying the Framework to an Analytics Agent">
-            </object>
-
-            <figcaption>
-
-                Figure 5 — Applying the Framework to an Analytics Agent
-
-            </figcaption>
-
-        </figure>
-
-        <div class="takeaway">
-
-            <h4>Design Takeaway</h4>
-
-            <p>
-
-                Instead of asking
-                "Should this go into the prompt?"
-
-                ask
-
-                "Which architectural pillar does this belong to?"
-
-            </p>
-
-        </div>
-
+<section id="putting-framework-into-practice" class="article-section">
+
+  <div class="wrapper">
+
+  <div class="section-kicker">Putting the Framework into Practice</div>
+
+  <h2>From Architecture to a Working Agent</h2>
+
+  <p>
+    A framework becomes useful when it changes how we design systems in practice.
+    The four pillars are not independent checkboxes. They work together to answer
+    four fundamental questions:
+  </p>
+
+  <div class="callout">
+    <p><strong>Identity</strong> — What is this agent responsible for?</p>
+    <p><strong>Knowledge</strong> — What does it need to know to do that job well?</p>
+    <p><strong>Capabilities</strong> — What must it be able to do to complete the job?</p>
+    <p><strong>Execution</strong> — How should it work through the task and verify the result?</p>
+  </div>
+
+  <p>
+    Consider an analytics agent whose job is to investigate changes in a product
+    metric and explain what happened.
+  </p>
+
+  <h3>Start with the outcome</h3>
+
+  <p>
+    The design should begin with the user's job, not with the model or the tools.
+    Suppose the user asks:
+  </p>
+
+  <blockquote>
+    <p>
+      "Analyse last month's retention drop, identify what changed, and send me the findings."
+    </p>
+  </blockquote>
+
+  <p>
+    The desired outcome is not "generate an answer about retention." The agent is
+    expected to complete an analytical investigation and deliver a useful result.
+    That distinction changes the architecture.
+  </p>
+
+  <h3>Identity</h3>
+
+  <p>
+    The agent needs a defined responsibility. It might be an analytics agent
+    responsible for investigating product metrics, following approved analytical
+    practices, communicating uncertainty, and presenting findings clearly.
+  </p>
+
+  <p>
+    Its identity establishes the behavioural constraints within which it operates.
+    It tells the agent what kind of work it is responsible for and how it should
+    approach that work.
+  </p>
+
+  <h3>Knowledge</h3>
+
+  <p>
+    The agent then needs the knowledge required to perform that responsibility
+    accurately. This is where the distinction between knowledge and retrieval
+    becomes particularly important.
+  </p>
+
+  <table class="knowledge-table">
+    <thead>
+      <tr>
+        <th>Knowledge</th>
+        <th>Examples for an Analytics Agent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Operating Knowledge</strong></td>
+        <td>
+          Table schemas, event definitions, metric definitions, business
+          terminology, approved query patterns and analytical rules.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Retrieved Knowledge</strong></td>
+        <td>
+          Relevant documentation, experiment details, product specifications,
+          previous analyses or other information needed for the particular
+          investigation.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Runtime Context</strong></td>
+        <td>
+          The user's request, observations, SQL results, intermediate findings,
+          decisions and other information currently needed to continue the task.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    A vector database alone cannot provide all of this. Some knowledge must be
+    consistently available because the agent cannot reliably perform its job
+    without it. Other information can be retrieved when relevant. And the
+    results of the agent's own work become part of the runtime context as the
+    task progresses.
+  </p>
+
+  <h3>Capabilities</h3>
+
+  <p>
+    The agent now needs the ability to perform the work. For this example, that
+    could include inspecting database schemas, generating and executing SQL,
+    running calculations, accessing relevant product data, creating a report,
+    and sending the final result.
+  </p>
+
+  <p>
+    These are not simply "tools added to an agent." They are capabilities required
+    by the job.
+  </p>
+
+  <p>
+    If the agent cannot query the underlying data, it cannot independently
+    investigate the retention drop. If it cannot deliver the resulting report,
+    it cannot complete the user's requested outcome.
+  </p>
+
+  <h3>Execution</h3>
+
+  <p>
+    Finally, the agent needs a process for turning its identity, knowledge and
+    capabilities into completed work.
+  </p>
+
+  <div class="flow-list">
+    <div class="flow-step">
+      <span class="flow-number">01</span>
+      <div>
+        <strong>Understand</strong>
+        <p>Interpret the user's goal and determine what needs to be established.</p>
+      </div>
     </div>
+    <div class="flow-step">
+      <span class="flow-number">02</span>
+      <div>
+        <strong>Investigate</strong>
+        <p>Use available knowledge and capabilities to gather the required evidence.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-number">03</span>
+      <div>
+        <strong>Act</strong>
+        <p>Execute queries, calculations and other actions required by the investigation.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-number">04</span>
+      <div>
+        <strong>Verify</strong>
+        <p>Check whether the evidence supports the findings and whether the requested work is actually complete.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-number">05</span>
+      <div>
+        <strong>Deliver</strong>
+        <p>Communicate the findings and complete the requested action.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    The important point is that the agent is not merely producing a sequence of
+    model responses. It is progressing toward a completed outcome.
+  </p>
+
+  <figure class="framework-diagram">
+    <object
+        type="image/svg+xml"
+        data="application.svg"
+        aria-label="Applying the Practical AI Agent Framework from a user goal through Identity, Knowledge, Capabilities and Execution to a completed outcome.">
+    </object>
+    <figcaption>
+      <strong>Figure 5.</strong> The four pillars work together to transform a user
+      goal into a completed outcome.
+    </figcaption>
+  </figure>
+
+  <div class="callout callout-emphasis">
+    <p>
+      <strong>The test is simple:</strong> remove one of the pillars and ask whether
+      the agent can still reliably complete the job. If the answer is no, that
+      pillar is part of the agent's practical architecture—not an optional feature.
+    </p>
+  </div>
+
+  </div>
 
 </section>
-<section id="architecture">
 
-    <div class="wrapper">
-
-        <h2>Architecture Before Implementation</h2>
-
-        <p>
-
-            One of the goals of this framework is to remain independent of today's implementation choices.
-
-        </p>
-
-        <p>
-
-            Foundation models will improve.
-
-            Context windows will grow.
-
-            New orchestration frameworks will emerge.
-
-            Better retrieval techniques will be developed.
-
-            Implementation details will continue to evolve.
-
-        </p>
-
-        <p>
-
-            The architectural questions, however, remain remarkably stable.
-
-        </p>
-
-        <div class="quote">
-
-            <p>
-
-                Good architecture should survive changes in technology.
-
-            </p>
-
-        </div>
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Architectural Component</th>
-
-                    <th>Possible Implementations</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td><strong>Identity</strong></td>
-
-                    <td>System Prompt, Instruction Templates, Policy Files</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Operating Knowledge</strong></td>
-
-                    <td>Prompt Context, Structured Configuration, Knowledge Files</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Retrieved Knowledge</strong></td>
-
-                    <td>RAG, Search, SQL Retrieval, Documentation Search, Knowledge Bases</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Runtime Context</strong></td>
-
-                    <td>Conversation History, Tool Outputs, Memory, Summaries</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Capabilities</strong></td>
-
-                    <td>MCP, APIs, Browser Automation, SQL, Vision, Python, OCR</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Execution</strong></td>
-
-                    <td>OpenAI Agents SDK, LangGraph, CrewAI, AutoGen, Semantic Kernel, Custom Orchestration</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <p>
-
-            This distinction is important.
-
-        </p>
-
-        <p>
-
-            Discussions around AI agents often begin by comparing orchestration libraries, prompting techniques or retrieval methods.
-
-            Those are implementation decisions.
-
-            They matter.
-
-            But they should come after the architecture has been designed.
-
-        </p>
-
-        <div class="takeaway">
-
-            <h4>Design Takeaway</h4>
-
-            <p>
-
-                Separate architectural decisions from implementation decisions.
-
-                Architecture determines what the system should be capable of.
-
-                Implementation determines how those capabilities are realised.
-
-            </p>
-
-        </div>
-
+<section id="architecture-vs-implementation" class="article-section">
+
+  <div class="wrapper">
+
+  <div class="section-kicker">Architecture vs Implementation</div>
+
+  <h2>Design the Architecture Before Choosing the Tools</h2>
+
+  <p>
+    AI agent development is increasingly surrounded by frameworks, protocols,
+    SDKs and implementation patterns. These are useful, but they can make it
+    easy to confuse the implementation of an agent with the architecture of
+    the agent itself.
+  </p>
+
+  <p>
+    The Practical AI Agent Framework deliberately separates the two.
+  </p>
+
+  <div class="comparison-grid">
+    <div class="comparison-card comparison-card-primary">
+      <div class="comparison-label">Architecture</div>
+      <h3>What the agent needs</h3>
+      <ul>
+        <li>Identity</li>
+        <li>Knowledge</li>
+        <li>Capabilities</li>
+        <li>Execution</li>
+      </ul>
+      <p>
+        These describe the enduring requirements of the agent's job.
+      </p>
     </div>
+    <div class="comparison-card">
+      <div class="comparison-label">Implementation</div>
+      <h3>How the agent is built</h3>
+      <ul>
+        <li>Prompt engineering</li>
+        <li>RAG and retrieval systems</li>
+        <li>MCP</li>
+        <li>Agent SDKs</li>
+        <li>Orchestration frameworks</li>
+        <li>Custom code</li>
+      </ul>
+      <p>
+        These are mechanisms for realizing the architecture.
+      </p>
+    </div>
+  </div>
+
+  <p>
+    For example, MCP can provide a useful mechanism for exposing capabilities.
+    A retrieval system can provide dynamically retrieved knowledge. An agent SDK
+    or orchestration framework can manage execution. None of these, individually,
+    defines what the agent is.
+  </p>
+
+  <p>
+    The same architecture can therefore be implemented using very different
+    technologies.
+  </p>
+
+  <figure class="framework-diagram">
+    <object
+        type="image/svg+xml"
+        data="architecture.svg"
+        aria-label="Architecture and implementation are separate layers, with Identity, Knowledge, Capabilities and Execution forming the architecture and prompts, RAG, MCP, SDKs and custom code forming implementation choices.">
+    </object>
+    <figcaption>
+      <strong>Figure 6.</strong> The architecture should remain durable while
+      implementation technologies evolve.
+    </figcaption>
+  </figure>
+
+  <h3>Where does a harness fit?</h3>
+
+  <p>
+    The term <em>harness</em> is increasingly used to describe the software layer
+    surrounding a model that manages things such as context assembly, tool calls,
+    state, retries, model routing, logging and other execution concerns.
+  </p>
+
+  <p>
+    In this framework, a harness is an <strong>implementation layer</strong>,
+    not a fifth pillar. Different harnesses can implement the same underlying
+    agent architecture.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Architecture defines what the agent needs to do its job.</strong>
+      Implementation defines how those requirements are realized.
+    </p>
+  </div>
+
+  <p>
+    This distinction matters because implementation technologies will continue
+    to change. Today's preferred SDK, protocol or orchestration framework may
+    look very different in a few years. A well-designed agent architecture
+    should not need to be reinvented every time the tooling changes.
+  </p>
+
+  <p>
+    Design the architecture first. Then choose the implementation that best
+    realizes it.
+  </p>
+
+  </div>
 
 </section>
-<section id="conclusion">
 
-    <div class="wrapper">
+<section id="conclusion" class="article-section conclusion-section">
 
-        <h2>Final Thoughts</h2>
+  <div class="wrapper">
 
-        <p>
+  <div class="section-kicker">Conclusion</div>
 
-            AI agents are becoming increasingly capable.
+  <h2>Build Agents Around the Work They Need to Complete</h2>
 
-            Yet many conversations about building them still begin with prompts, models, or orchestration frameworks.
+  <p>
+    The term <em>AI agent</em> is becoming increasingly broad. A system prompt,
+    a knowledge base, a tool call, an orchestration framework, and a fully
+    autonomous software system can all be described using the same word.
+  </p>
 
-            Those are important decisions.
+  <p>
+    The Practical AI Agent Framework offers a simpler way to reason about the
+    problem: start with the job the user needs completed, then design the system
+    around what is required to reliably complete it.
+  </p>
 
-            They simply are not the first ones.
-
-        </p>
-
-        <p>
-
-            Before choosing a model, define the goal.
-
-            Before writing a prompt, define the Identity.
-
-            Before connecting a vector database, determine what knowledge the agent actually requires.
-
-            Before adding every available capability, ask which actions are genuinely necessary to complete the user's work.
-
-            Before increasing context, ask whether every piece of information contributes to a more reliable outcome.
-
-        </p>
-
-        <p>
-
-            In many ways, designing an AI agent is remarkably similar to onboarding a skilled employee.
-
-        </p>
-
-        <ul>
-
-            <li>Define their role.</li>
-
-            <li>Teach them what they need to know.</li>
-
-            <li>Provide access to the right systems.</li>
-
-            <li>Establish how work should be performed.</li>
-
-            <li>Evaluate them based on the outcomes they deliver.</li>
-
-        </ul>
-
-        <p>
-
-            The same discipline produces better AI agents.
-
-        </p>
-
-        <p>
-
-            Not because it creates more sophisticated systems.
-
-            But because it creates systems that are easier to understand, easier to maintain and ultimately more reliable.
-
-        </p>
-
-        <div class="quote">
-
-            <p>
-
-                The challenge isn't building the biggest AI agent.
-
-                It's building the smallest system capable of reliably completing its intended outcomes.
-
-            </p>
-
-        </div>
-
+  <div class="pillar-summary">
+    <div class="pillar-summary-item">
+      <span class="pillar-summary-number">01</span>
+      <strong>Identity</strong>
+      <p>Defines who the agent is, what it is responsible for, and how it should behave.</p>
     </div>
+    <div class="pillar-summary-item">
+      <span class="pillar-summary-number">02</span>
+      <strong>Knowledge</strong>
+      <p>Provides the stable, retrieved and runtime information required to perform the job.</p>
+    </div>
+    <div class="pillar-summary-item">
+      <span class="pillar-summary-number">03</span>
+      <strong>Capabilities</strong>
+      <p>Gives the agent the ability to observe and change the systems required to complete the work.</p>
+    </div>
+    <div class="pillar-summary-item">
+      <span class="pillar-summary-number">04</span>
+      <strong>Execution</strong>
+      <p>Turns the agent's reasoning and capabilities into a process that progresses toward a verified outcome.</p>
+    </div>
+  </div>
 
+  <p>
+    The framework is intentionally technology-agnostic. Models, prompts,
+    retrieval systems, protocols, SDKs and harnesses will continue to evolve.
+    The underlying architectural questions remain.
+  </p>
+
+  <p>
+    What is this agent responsible for? What does it need to know? What does it
+    need to be able to do? And how will it know that the work is actually done?
+  </p>
+
+  <div class="final-statement">
+    <p class="final-statement-large">
+      A practical AI agent should be the smallest system capable of reliably
+      completing its intended outcomes.
+    </p>
+    <p class="final-statement-supporting">
+      More capabilities are not inherently better. More context is not inherently
+      better. More complexity is not inherently better. The goal is to build
+      enough of the right system to reliably do the work.
+    </p>
+  </div>
+
+  <p class="closing-note">
+    This framework is intended as a starting point rather than a final definition.
+    As agent architectures evolve, these principles should be tested, challenged
+    and refined through real implementations and practical experience.
+  </p>
+
+  </div>
+
+</section>
 </section>
 </article>
 </main>
